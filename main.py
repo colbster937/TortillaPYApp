@@ -22,6 +22,7 @@ proxy.setHostName('127.0.0.1')
 proxy.setPort(52892)
 QNetworkProxy.setApplicationProxy(proxy)
 
+username = os.getlogin()
 
 class Browser(QMainWindow):
     def __init__(self):
@@ -51,7 +52,7 @@ def main():
     app = QApplication([])
     window = Browser()
     window.show()
-    window.browserView.load(QUrl("http://tortillagames.org"))
+    window.browserView.load(QUrl(f"http://tortillagames.org?user={username}"))
     app.exec_()
 
 if __name__ == "__main__":
